@@ -56,6 +56,8 @@ Hice un simple script en python para verificar que los endpoints esten respondie
 nginx-test.py http://example.com; echo $?
 ```
 
+#### Routing
+![Routing Example](https://github.com/jvimaverick/ML/routing.png)
 
 Autor
 ----
