@@ -1,0 +1,45 @@
+nginx-a:
+  image: juanviola/n1
+  container_name: Nginx-A 
+  ports:
+    - "8000:80"
+  links:
+    - app1
+    - app2
+  entrypoint: /entry.sh
+  environment:
+    - APP_NAME=Nginx A
+    - NEW_RELIC_APP_KEY=d2cd30db1dcab64bf22992648e483389f59874a6
+    - NEW_RELIC_APP_NAME=Nginx A
+  volumes:
+    - '/docker-files/ML/nginx/nginx-app1.conf:/etc/nginx/conf.d/default.conf'
+    - '/docker-files/ML/nginx/nginx-nr-agent.template:/nginx-nr-agent.template'
+    - '/docker-files/ML/nginx/entry.sh:/entry.sh'
+    - '/docker-files/ML/nginx/logs:/var/log/nginx-mnt'
+
+nginx-b:
+  image: juanviola/n1
+  container_name: Nginx-B
+  ports:
+    - "8001:80"
+  links:
+    - app1
+    - app2
+  entrypoint: /entry.sh
+  environment:
+    - APP_NAME=Nginx B
+    - NEW_RELIC_APP_KEY=d2cd30db1dcab64bf22992648e483389f59874a6
+    - NEW_RELIC_APP_NAME=Nginx B
+  volumes:
+    - '/docker-files/ML/nginx/nginx-app1.conf:/etc/nginx/conf.d/default.conf'
+    - '/docker-files/ML/nginx/nginx-nr-agent.template:/nginx-nr-agent.template'
+    - '/docker-files/ML/nginx/entry.sh:/entry.sh'
+    - '/docker-files/ML/nginx/logs:/var/log/nginx-mnt'
+
+app1:
+  container_name: app1
+  image: 'juanviola/app1:latest'
+  restart: always
+app2:
+  container_name: app2
+  image: 'juanviola/app2:latest'
