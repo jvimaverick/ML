@@ -57,7 +57,7 @@ nginx-test.py http://example.com; echo $?
 ```
 
 #### Routing
-![Routing Example](https://github.com/jvimaverick/ML/routing.png)
+![Routing Example](https://github.com/jvimaverick/ML/blob/master/routing.png)
 
 Autor
 ----
